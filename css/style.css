@@ -38,22 +38,43 @@ body {
 }
 
 @keyframes fade-in {
-    from {opacity: 0;}
-    to {opacity: 1;}
+
+    /* from {opacity: 0;}
+    to {opacity: 1;} */
+    from {
+        bottom: calc(1rem + 45px - 300px);
+        opacity: 0;
+    }
+
+    to {
+        bottom: calc(1rem + 45px);
+        opacity: 1;
+    }
 }
 
 @keyframes fade-out {
-    from {opacity: 1;}
-    to {opacity: 0;}
+
+    /* from {opacity: 1;}
+    to {opacity: 0;} */
+    from {
+        bottom: calc(1rem + 45px);
+        opacity: 1;
+    }
+
+    to {
+        bottom: calc(1rem + 45px - 300px);
+        opacity: 0;
+    }
 }
 
 .menu-wrapper {
     position: fixed;
     /* cursor: pointer; */
-    bottom: calc(1rem + 45px);
-    right: calc(1rem + 45px);
+    bottom: calc(1.5rem + 50px);
+    right: 1rem;
     overflow: hidden;
-    background: lightgray;
+    background: white;
+    border: 1px solid #0099A8;
     animation: fade-in 250ms ease-in-out;
 }
 
@@ -67,8 +88,15 @@ body {
     list-style-type: none;
 }
 
+.menu-wrapper li {
+    padding: 5px 10px;
+    background-color: white;
+    transition: background-color .3s ease-out, border .3s ease-out;
+}
+
 .menu-wrapper li:hover {
-    background-color: gray;
+    background-color: #F7921E;
+    transition: background-color .3s ease-out, border .3s ease-out;
 }
 
 .menu-wrapper ul li a {
