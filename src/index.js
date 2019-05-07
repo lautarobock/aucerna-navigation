@@ -96,7 +96,7 @@ class Button {
         const el = document.createElement('div');
         el.onclick = event => this.onClickListeners.forEach(listener => listener(event));
         el.className = 'menu-button';
-        el.innerHTML = `<img src="/api/aucernaLogo-trans.png" style="width: 100%"/>`;
+        el.innerHTML = `<img src="/assets/aucernaLogo-trans.png" style="width: 100%"/>`;
         return el;
     }
 
