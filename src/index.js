@@ -79,7 +79,9 @@ class Menu {
         const el = document.createElement('div');
         el.className = 'menu-wrapper';
         el.innerHTML = 
-            `<ul>
+            `
+            <h5>Applications</h5>
+            <ul>
                 ${this.data.menu.applications.map(item => `<li><a href="${item.link}">${item.name}</a></li>`).join('')}
             </ul>`;
         return el;
@@ -94,7 +96,7 @@ class Button {
         const el = document.createElement('div');
         el.onclick = event => this.onClickListeners.forEach(listener => listener(event));
         el.className = 'menu-button';
-        el.innerHTML = `<img src="/some-https-endpoint/aucernaLogo-trans.png" style="width: 100%"/>`;
+        el.innerHTML = `<img src="/api/aucernaLogo-trans.png" style="width: 100%"/>`;
         return el;
     }
 
