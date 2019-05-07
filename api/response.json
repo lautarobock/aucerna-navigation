@@ -9,7 +9,7 @@
 			{
                 "name": "Reserves",
 				"icon": "some-https-endpoint/img/aucerna-portfolio.png",
-				"link": "https://uat.portfolio.aucerna.app/"
+				"link": "javascript:alert('hello')"
 			},
 			{
                 "name": "PlanningSpace",
