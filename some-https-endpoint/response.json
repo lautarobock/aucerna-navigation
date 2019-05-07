@@ -1,0 +1,18 @@
+{
+	menu: {
+		lines: [
+			{
+				icon: 'some-https-endpoint/img/aucerna-portfolio.png',
+				link: 'https://uat.portfolio.aucerna.app/'
+			},		
+			{
+				icon: 'some-https-endpoint/img/aucerna-portfolio.png',
+				link: 'https://uat.portfolio.aucerna.app/'
+			},
+			{
+				icon: 'some-https-endpoint/img/aucerna-portfolio.png',
+				link: 'https://uat.portfolio.aucerna.app/'
+			}			
+		]	
+	}
+}
