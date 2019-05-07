@@ -1,19 +1,77 @@
 body {
     padding-top: 5rem;
-  }
-  .starter-template {
+}
+
+.starter-template {
     padding: 3rem 1.5rem;
     text-align: center;
-  }
+}
 
-  .toggle-content {
-	display: none;
-	height: 0;
-	overflow: hidden;
-	transition: height 350ms ease-in-out;
+.toggle-content {
+    display: none;
+    height: 0;
+    overflow: hidden;
+    transition: height 350ms ease-in-out;
 }
 
 .toggle-content.is-visible {
-	display: block;
-	height: auto;
+    display: block;
+    height: auto;
+}
+
+.menu-button {
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    box-shadow: 1px 1px #ccc;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: #fafafa;
+    box-shadow: none !important;
+}
+
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fade-out {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+.menu-wrapper {
+    position: fixed;
+    /* cursor: pointer; */
+    bottom: calc(1.5rem + 50px);
+    right: 1rem;
+    overflow: hidden;
+    background: lightgray;
+    animation: fade-in 250ms ease-in-out;
+}
+
+.menu-wrapper.removed {
+    animation: fade-out 250ms ease-in-out;
+}
+
+.menu-wrapper ul {
+    padding: 0 !important;
+    margin: 1rem !important;
+    list-style-type: none;
+}
+
+.menu-wrapper li:hover {
+    background-color: gray;
+}
+
+.menu-wrapper ul li a {
+    text-decoration: none !important;
+    color: black !important;
 }

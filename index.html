@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="">
     <title>Main App Homepage</title>
 
     <!-- Bootstrap core CSS -->
@@ -15,6 +14,11 @@
     <link href="/css/style.css" rel="stylesheet">
 
     <script type="text/javascript" src='/some-https-endpoint/script.js'></script>
+    <script>
+        window.onload = () => new Main({
+            // user, permission, etc.
+        }).run();
+    </script>
   </head>
 
   <body>

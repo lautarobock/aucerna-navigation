@@ -1,17 +1,20 @@
 {
-	menu: {
-		lines: [
+	"menu": {
+		"applications": [
 			{
-				icon: 'some-https-endpoint/img/aucerna-portfolio.png',
-				link: 'https://uat.portfolio.aucerna.app/'
+                "name": "Portfolio",
+				"icon": "some-https-endpoint/img/aucerna-portfolio.png",
+				"link": "https://www.google.com"
 			},		
 			{
-				icon: 'some-https-endpoint/img/aucerna-portfolio.png',
-				link: 'https://uat.portfolio.aucerna.app/'
+                "name": "Reserves",
+				"icon": "some-https-endpoint/img/aucerna-portfolio.png",
+				"link": "https://uat.portfolio.aucerna.app/"
 			},
 			{
-				icon: 'some-https-endpoint/img/aucerna-portfolio.png',
-				link: 'https://uat.portfolio.aucerna.app/'
+                "name": "PlanningSpace",
+				"icon": "some-https-endpoint/img/aucerna-portfolio.png",
+				"link": "https://uat.portfolio.aucerna.app/"
 			}			
 		]	
 	}

@@ -1,90 +1,103 @@
-window.onload = function() {
-    var menu;
-    function prepareFrame() {
-        console.log('prepareFrame() document: ', document);
-        var widgetDiv = document.createElement("div");       
+class Main {
 
-        var logoWrapper = document.createElement("div");
-        logoWrapper.style.borderRadius  = '50%';
-        logoWrapper.style.border  = '1px solid #ddd';
-        logoWrapper.style.overflow  = 'hidden';
-        logoWrapper.style.boxShadow   = '1px 1px #ccc';
-        logoWrapper.style.boxShadowposition = 'absolute';
-
-        logoWrapper.style.width  = '80px';
-        logoWrapper.style.height  = '80px';
-        logoWrapper.style.cursor  = 'pointer';
-        logoWrapper.style.zIndex  = 999999;
-
-        widgetDiv.style.position = 'absolute';
-        widgetDiv.style.bottom = '10px';
-        widgetDiv.style.right = '80px';        
-
-        var logoButton = document.createElement("img");
-        logoButton.setAttribute("src", "/some-https-endpoint/aucernaLogo-trans.png");
-        logoButton.style.width = '100%';
-        logoButton.onclick = buttonClicked;
-
-        logoWrapper.appendChild(logoButton);
-        widgetDiv.appendChild(logoWrapper);
-        
-        menu = document.createElement("div");
-        menu.style.position = 'fixed';
-        menu.style.width='200px';
-        menu.style.height='200px';
-        menu.style.bottom='110px';
-        menu.style.right='25px';
-        menu.style.backgroundColor ='pink';
-
-
-        widgetDiv.appendChild(menu);
-
-        document.body.appendChild(widgetDiv);
-
+    menu;
+    data;
+    context;
+    
+    constructor(context) {
+        this.context = context;
     }
 
-    function buttonClicked(){
-        console.log("buttonClicked");
+    prepareFrame(data) {
+        this.data = data;
+        const btn = new Button();
+        btn.onClick(() => this.buttonClicked());
+        document.body.appendChild(btn.render());
+    }
 
-        if (window.getComputedStyle(menu).display === 'block'){
-            fade(menu);                      
+    buttonClicked() {
+        if (this.menu) {
+            this.fadeOut(this.menu);
+        } else {
+            this.fadeIn(this.data);
         }
-        else{
-            show(menu);                       
-        }
-        
     }
 
-    function fade(element) {
-        console.log("fade");
-        var op = 1;  // initial opacity
-        var timer = setInterval(function () {
-            if (op <= 0.2){
-                clearInterval(timer);
-                op = 0.2;
-                element.style.display = 'none';
+    fadeOut() {
+        this.menu.classList.add('removed');
+        // remove node after animation ends
+        setTimeout(() => {
+            this.menu.parentNode.removeChild(this.menu);
+            this.menu = null;
+        }, 200);
+    }
+
+    fadeIn() {
+        this.menu = new Menu(this.data).render();
+        document.body.appendChild(this.menu);
+    }
+
+    run() {
+        new JsonHttp().get('/some-https-endpoint/response.json')
+            .then(response => this.prepareFrame(response))
+            .catch(err => console.error(err));
+    }
+}
+
+class JsonHttp {
+
+    get(url) {
+        return new Promise((resolve, reject) => {
+            try {
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            resolve(JSON.parse(this.responseText));
+                        } else {
+                            reject({ status: this.status, err: this.statusText });
+                        }
+                    }
+                };
+                xmlhttp.open('GET', url, true);
+                xmlhttp.send();
+            } catch (err) {
+                reject(err);
             }
-            op -= 0.2;
-            element.style.opacity = op;
-            element.style.filter = 'alpha(opacity=' + op * 100 + ")";            
-        }, 50);
+        });
+    }
+}
+
+class Menu {
+
+    constructor(data) {
+        this.data = data;
     }
 
-    function show(element) {
-        console.log("show");
-        element.style.display = 'block';
-        var op = 0;  // initial opacity
-        var timer2 = setInterval(function () {
-            if (op >= 0.8){
-                clearInterval(timer2);
-                element.style.display = 'block';
-                op = 0.8;
-            }
-            op += 0.2;            
-            element.style.opacity = op;
-            element.style.filter = 'alpha(opacity=' + op * 100 + ")";            
-        }, 50);
+    render() {
+        const el = document.createElement('div');
+        el.className = 'menu-wrapper';
+        el.innerHTML = 
+            `<ul>
+                ${this.data.menu.applications.map(item => `<li><a href="${item.link}">${item.name}</a></li>`).join('')}
+            </ul>`;
+        return el;
+    }
+}
+
+class Button {
+
+    onClickListeners = [];
+
+    render() {
+        const el = document.createElement('div');
+        el.onclick = event => this.onClickListeners.forEach(listener => listener(event));
+        el.className = 'menu-button';
+        el.innerHTML = `<img src="/some-https-endpoint/aucernaLogo-trans.png" style="width: 100%"/>`;
+        return el;
     }
 
-    prepareFrame();
+    onClick(callback) {
+        this.onClickListeners.push(callback);
+    }
 }
