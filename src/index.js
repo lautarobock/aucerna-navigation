@@ -82,9 +82,20 @@ class Menu {
             `
             <h5>Applications</h5>
             <ul>
-                ${this.data.menu.applications.map(item => `<li><a href="${item.link}">${item.name}</a></li>`).join('')}
+                ${this.data.menu.applications.map(item => new MenuItem(item).render()).join('')}
             </ul>`;
         return el;
+    }
+}
+
+class MenuItem {
+    
+    constructor(item) {
+        this.item = item;
+    }
+
+    render() {
+        return `<li><a href="${this.item.link}">${this.item.name}</a></li>`
     }
 }
 
