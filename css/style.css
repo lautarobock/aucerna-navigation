@@ -93,6 +93,8 @@
 
 .menu-wrapper li img {
     margin-right: 5px;
+    width: 60px;
+    height: 60px;
 }
 .menu-wrapper ul li a {
     padding: 10px 20px;
