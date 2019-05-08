@@ -3,17 +3,17 @@
 		"applications": [
 			{
                 "name": "Portfolio",
-				"icon": "http://localhost:8080/assets/portfolio.png",
+				"icon": "https://lautarobock.github.io/aucerna-navigation/assets/portfolio.png",
 				"link": "https://www.google.com"
 			},		
 			{
                 "name": "Reserves",
-				"icon": "http://localhost:8080/assets/reserves.png",
+				"icon": "https://lautarobock.github.io/aucerna-navigation/assets/reserves.png",
 				"link": "javascript:alert('hello')"
 			},
 			{
                 "name": "PlanningSpace",
-				"icon": "http://localhost:8080/assets/planning-space.png",
+				"icon": "https://lautarobock.github.io/aucerna-navigation/assets/planning-space.png",
 				"link": "https://uat.portfolio.aucerna.app/"
 			}	
 		]	
