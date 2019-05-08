@@ -9,7 +9,7 @@ npx http-server -p 8080 --cors
 
 # Embed in a site
 
-Just need to include `index.js` and `style.css`. And call `run()` method of a `Main` instance.
+Just need to include `index.js` . And call `run()` method of a `Main` instance.
 
 ```html
 <head>
