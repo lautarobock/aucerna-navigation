@@ -1,4 +1,3 @@
-const CONFIG_URL = '/api/response.json';
 class Main {
 
     menu;
@@ -41,7 +40,7 @@ class Main {
     }
 
     run() {
-        new JsonHttp().get(CONFIG_URL)
+        new JsonHttp().get(this.context.url)
             .then(response => this.prepareFrame(response))
             .catch(err => console.error(err));
     }
