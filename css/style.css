@@ -26,6 +26,7 @@
     cursor: pointer;
     animation: slide-in-button 1000ms ease-in-out;
     z-index: 3000;
+    background-color: white;
 }
 
 .menu-button:hover {
