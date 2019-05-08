@@ -58,8 +58,7 @@
 }
 
 .menu-wrapper {
-    position: fixed;
-    opacity: 0.9;
+    position: fixed;    
     bottom: calc(1.5rem + 50px);
     right: 2rem;
     overflow: hidden;        
