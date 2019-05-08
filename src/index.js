@@ -1,5 +1,5 @@
-const CONFIG_URI = '/api/response.json';
-const ASSETS_URI = '/assets';
+const CONFIG_URI = 'api/response.json';
+const ASSETS_URI = 'assets';
 
 class Main {
 
