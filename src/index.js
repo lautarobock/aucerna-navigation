@@ -82,7 +82,6 @@ class Menu {
         el.className = 'menu-wrapper';
         el.innerHTML = 
             `
-            <h5>Applications</h5>
             <ul>
                 ${this.data.menu.applications.map(item => new MenuItem(item).render()).join('')}
             </ul>`;
@@ -97,7 +96,7 @@ class MenuItem {
     }
 
     render() {
-        return `<li><a href="${this.item.link}">${this.item.name}</a></li>`
+        return `<li><a href="${this.item.link}"><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
     }
 }
 
