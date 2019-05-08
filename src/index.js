@@ -7,21 +7,22 @@ class Main {
     
     constructor(context) {
         this.context = context;
+        document.addEventListener('click', () => {
+            if (this.menu) {
+                this.fadeOut();
+            }
+        });
     }
 
     prepareFrame(data) {
         this.data = data;
         const btn = new Button();
-        btn.onClick(() => this.buttonClicked());
+        btn.onClick(event => {
+            if (!this.menu) {
+                this.fadeIn(event);
+            }
+        });
         document.body.appendChild(btn.render());
-    }
-
-    buttonClicked() {
-        if (this.menu) {
-            this.fadeOut(this.menu);
-        } else {
-            this.fadeIn(this.data);
-        }
     }
 
     fadeOut() {
@@ -33,7 +34,8 @@ class Main {
         }, 200);
     }
 
-    fadeIn() {
+    fadeIn(event) {
+        event.stopPropagation();
         this.menu = new Menu(this.data).render();
         document.body.appendChild(this.menu);
     }
