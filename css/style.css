@@ -13,7 +13,7 @@
 }
 
 .menu-button {
-    opacity: 0.5;
+    opacity: 0.8;
     border-radius: 50%;
     border: 1px solid #ddd;
     overflow: hidden;
@@ -25,6 +25,7 @@
     height: 50px;
     cursor: pointer;
     animation: slide-in-button 1000ms ease-in-out;
+    z-index: 3000;
 }
 
 .menu-button:hover {
@@ -66,6 +67,7 @@
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    z-index: 3000;
 }
 
 .menu-wrapper.removed {

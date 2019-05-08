@@ -3,19 +3,19 @@
 		"applications": [
 			{
                 "name": "Portfolio",
-				"icon": "/assets/portfolio.png",
+				"icon": "http://localhost:8080/assets/portfolio.png",
 				"link": "https://www.google.com"
 			},		
 			{
                 "name": "Reserves",
-				"icon": "/assets/reserves.png",
+				"icon": "http://localhost:8080/assets/reserves.png",
 				"link": "javascript:alert('hello')"
 			},
 			{
                 "name": "PlanningSpace",
-				"icon": "/assets/planning-space.png",
+				"icon": "http://localhost:8080/assets/planning-space.png",
 				"link": "https://uat.portfolio.aucerna.app/"
-			}			
+			}	
 		]	
 	}
 }

@@ -1,3 +1,6 @@
+const CONFIG_URI = '/api/response.json';
+const ASSETS_URI = '/assets';
+
 class Main {
 
     menu;
@@ -5,6 +8,7 @@ class Main {
     context;
     
     constructor(context) {
+        console.log('START MENU');
         this.context = context;
         document.addEventListener('click', () => {
             if (this.menu) {
@@ -15,7 +19,7 @@ class Main {
 
     prepareFrame(data) {
         this.data = data;
-        const btn = new Button();
+        const btn = new Button(`${this.context.url}${ASSETS_URI}`)
         btn.onClick(event => {
             if (!this.menu) {
                 this.fadeIn(event);
@@ -40,7 +44,7 @@ class Main {
     }
 
     run() {
-        new JsonHttp().get(this.context.url)
+        new JsonHttp().get(`${this.context.url}${CONFIG_URI}`)
             .then(response => this.prepareFrame(response))
             .catch(err => console.error(err));
     }
@@ -101,13 +105,17 @@ class MenuItem {
 
 class Button {
 
+    constructor(assetsURL) {
+        this.assetsURL = assetsURL;
+    }
+
     onClickListeners = [];
 
     render() {
         const el = document.createElement('div');
         el.onclick = event => this.onClickListeners.forEach(listener => listener(event));
         el.className = 'menu-button';
-        el.innerHTML = `<img src="/assets/aucernaLogo-trans.png" style="width: 100%"/>`;
+        el.innerHTML = `<img src="${this.assetsURL}/aucernaLogo-trans.png" style="width: 100%"/>`;
         return el;
     }
 
