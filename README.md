@@ -13,11 +13,14 @@ Just need to include `index.js` and `style.css`. And call `run()` method of a `M
 
 ```html
 <head>
-    <link href="style.css" rel="stylesheet">
-    <script type="text/javascript" src='index.js'></script>
+    <link href="https://lautarobock.github.io/aucerna-navigation/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src='https://lautarobock.github.io/aucerna-navigation/src/index.js'></script>
     <script>
         // starts on load, but is not mandatory.
-        window.onload = () => new Main({}).run();
+        window.onload = () => new Main({
+            // this URL is just for testing purposes, has assets and a mock configuration
+            url: 'https://lautarobock.github.io/aucerna-navigation/'
+        }).run();
     </script>
 </head>
 <body>
