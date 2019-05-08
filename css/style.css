@@ -13,7 +13,7 @@
 }
 
 .menu-button {
-    opacity: 0.5;
+    opacity: 0.8;
     border-radius: 50%;
     border: 1px solid #ddd;
     overflow: hidden;
@@ -25,6 +25,7 @@
     height: 50px;
     cursor: pointer;
     animation: slide-in-button 1000ms ease-in-out;
+    background-color: white;
 }
 
 .menu-button:hover {
