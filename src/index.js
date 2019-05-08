@@ -1,4 +1,5 @@
 const CONFIG_URI = 'api/response.json';
+const STYLES_URI = 'css/style.css';
 const ASSETS_URI = 'assets';
 
 class Main {
@@ -43,9 +44,20 @@ class Main {
         document.body.appendChild(this.menu);
     }
 
+    addStyleTag(){
+        const head = document.head || document.getElementsByTagName('head')[0];
+        const style = document.createElement('link');    
+        head.appendChild(style);        
+        style.rel = 'stylesheet';
+        style.href = `${this.context.url}${STYLES_URI}`;
+    }
+
     run() {
         new JsonHttp().get(`${this.context.url}${CONFIG_URI}`)
-            .then(response => this.prepareFrame(response))
+            .then(response => {
+                this.addStyleTag();
+                this.prepareFrame(response);
+            })
             .catch(err => console.error(err));
     }
 }
