@@ -106,3 +106,7 @@
     width: 100%;
     display: block;
 }
+
+.menu-wrapper ul li a.disabled {
+    cursor: not-allowed;
+}

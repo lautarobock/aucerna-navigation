@@ -40,7 +40,7 @@ class Main {
 
     fadeIn(event) {
         event.stopPropagation();
-        this.menu = new Menu(this.data).render();
+        this.menu = new Menu(this.data, this.context.current).render();
         document.body.appendChild(this.menu);
     }
 
@@ -88,8 +88,9 @@ class JsonHttp {
 
 class Menu {
 
-    constructor(data) {
+    constructor(data, current) {
         this.data = data;
+        this.current = current;
     }
 
     render() {
@@ -98,7 +99,7 @@ class Menu {
         el.innerHTML = 
             `
             <ul>
-                ${this.data.menu.applications.map(item => new MenuItem(item).render()).join('')}
+                ${this.data.menu.applications.map(item => new MenuItem(item, item.name === this.current).render()).join('')}
             </ul>`;
         return el;
     }
@@ -106,12 +107,17 @@ class Menu {
 
 class MenuItem {
     
-    constructor(item) {
+    constructor(item, disabled) {
         this.item = item;
+        this.disabled = disabled;
     }
 
     render() {
-        return `<li><a href="${this.item.link}"><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
+        if (this.disabled) {
+            return `<li><a><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
+        } else {
+            return `<li><a class="disabled" href="${this.item.link}"><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
+        }
     }
 }
 
