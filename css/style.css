@@ -1,4 +1,4 @@
-@keyframes slide-in-button {
+@keyframes slide-in-button-bottom-right {
     from {
         right: -100px;
         bottom: -100px;
@@ -6,8 +6,50 @@
     }
 
     to {
-        right: 2rem;
+        right: 1rem;
         bottom: 1rem;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-button-bottom-left {
+    from {
+        left: -100px;
+        bottom: -100px;
+        opacity: 0;
+    }
+
+    to {
+        left: 1rem;
+        bottom: 1rem;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-button-top-right {
+    from {
+        right: -100px;
+        top: -100px;
+        opacity: 0;
+    }
+
+    to {
+        right: 1rem;
+        top: 1rem;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-button-top-left {
+    from {
+        left: -100px;
+        top: -100px;
+        opacity: 0;
+    }
+
+    to {
+        left: 1rem;
+        top: 1rem;
         opacity: 1;
     }
 }
@@ -18,15 +60,12 @@
     border: 1px solid #ddd;
     overflow: hidden;
     box-shadow: 1px 1px #ccc;
-    position: fixed;
-    bottom: 1rem;
-    right: 2rem;
     width: 50px;
     height: 50px;
     cursor: pointer;
-    animation: slide-in-button 1000ms ease-in-out;
     z-index: 3000;
     background-color: white;
+    position: fixed;
 }
 
 .menu-button:hover {
@@ -35,7 +74,31 @@
     opacity: 1;
 }
 
-@keyframes fade-in {
+.menu-button.bottom-right {
+    bottom: 1rem;
+    right: 1rem;
+    animation: slide-in-button-bottom-right 1000ms ease-in-out;
+}
+
+.menu-button.bottom-left {
+    bottom: 1rem;
+    left: 1rem;
+    animation: slide-in-button-bottom-left 1000ms ease-in-out;
+}
+
+.menu-button.top-right {
+    top: 1rem;
+    right: 1rem;
+    animation: slide-in-button-top-right 1000ms ease-in-out;
+}
+
+.menu-button.top-left {
+    top: 1rem;
+    left: 1rem;
+    animation: slide-in-button-top-left 1000ms ease-in-out;
+}
+
+@keyframes fade-in-bottom {
     from {
         bottom: calc(1rem + 45px - 300px);
         opacity: 0;
@@ -47,7 +110,7 @@
     }
 }
 
-@keyframes fade-out {
+@keyframes fade-out-bottom {
     from {
         bottom: calc(1rem + 45px);
         opacity: 1;
@@ -58,21 +121,79 @@
         opacity: 0;
     }
 }
+
+@keyframes fade-in-top {
+    from {
+        top: calc(1rem + 45px - 300px);
+        opacity: 0;
+    }
+
+    to {
+        top: calc(1rem + 45px);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out-top {
+    from {
+        top: calc(1rem + 45px);
+        opacity: 1;
+    }
+
+    to {
+        top: calc(1rem + 45px - 300px);
+        opacity: 0;
+    }
+}
+
 
 .menu-wrapper {
     position: fixed;    
-    bottom: calc(1.5rem + 50px);
-    right: 2rem;
     overflow: hidden;        
-    animation: fade-in 250ms ease-in-out;    
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
     z-index: 3000;
 }
 
-.menu-wrapper.removed {
-    animation: fade-out 250ms ease-in-out;
+.menu-wrapper.bottom-right.removed {
+    animation: fade-out-bottom 250ms ease-in-out;
+}
+
+.menu-wrapper.bottom-right {
+    bottom: calc(1.5rem + 50px);
+    right: 1rem;
+    animation: fade-in-bottom 250ms ease-in-out;
+}
+
+.menu-wrapper.bottom-left.removed {
+    animation: fade-out-bottom 250ms ease-in-out;
+}
+
+.menu-wrapper.bottom-left {
+    bottom: calc(1.5rem + 50px);
+    left: 1rem;
+    animation: fade-in-bottom 250ms ease-in-out;
+}
+
+.menu-wrapper.top-right.removed {
+    animation: fade-out-top 250ms ease-in-out;
+}
+
+.menu-wrapper.top-right {
+    top: calc(1.5rem + 50px);
+    right: 1rem;
+    animation: fade-in-top 250ms ease-in-out;
+}
+
+.menu-wrapper.top-left.removed {
+    animation: fade-out-top 250ms ease-in-out;
+}
+
+.menu-wrapper.top-left {
+    top: calc(1.5rem + 50px);
+    left: 1rem;
+    animation: fade-in-top 250ms ease-in-out;
 }
 
 .menu-wrapper h5 {

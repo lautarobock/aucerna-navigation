@@ -1,16 +1,22 @@
 const CONFIG_URI = 'api/response.json';
 const STYLES_URI = 'css/style.css';
 const ASSETS_URI = 'assets';
+const PLACEMENT_TOP_RIGTH = 'top-right';
+const PLACEMENT_TOP_LEFT = 'top-left';
+const PLACEMENT_BOTTOM_RIGTH = 'bottom-right';
+const PLACEMENT_BOTTOM_LEFT = 'bottom-left';
 
 class Main {
 
     menu;
     data;
     context;
+    placement;
     
-    constructor(context) {
+    constructor(context, placement) {
         console.log('START MENU');
         this.context = context;
+        this.placement = placement || PLACEMENT_BOTTOM_RIGTH;
         document.addEventListener('click', () => {
             if (this.menu) {
                 this.fadeOut();
@@ -20,7 +26,7 @@ class Main {
 
     prepareFrame(data) {
         this.data = data;
-        const btn = new Button(`${this.context.url}${ASSETS_URI}`)
+        const btn = new Button(`${this.context.url}${ASSETS_URI}`, this.placement);
         btn.onClick(event => {
             if (!this.menu) {
                 this.fadeIn(event);
@@ -40,7 +46,7 @@ class Main {
 
     fadeIn(event) {
         event.stopPropagation();
-        this.menu = new Menu(this.data, this.context.current).render();
+        this.menu = new Menu(this.data, this.context.current, this.placement).render();
         document.body.appendChild(this.menu);
     }
 
@@ -55,7 +61,7 @@ class Main {
     run() {
         new JsonHttp().get(`${this.context.url}${CONFIG_URI}`)
             .then(response => {
-                this.addStyleTag();
+                // this.addStyleTag();
                 this.prepareFrame(response);
             })
             .catch(err => console.error(err));
@@ -88,14 +94,16 @@ class JsonHttp {
 
 class Menu {
 
-    constructor(data, current) {
+    constructor(data, current, placement) {
         this.data = data;
         this.current = current;
+        this.placement = placement;
     }
 
     render() {
         const el = document.createElement('div');
-        el.className = 'menu-wrapper';
+        el.classList.add('menu-wrapper');
+        el.classList.add(this.placement);
         el.innerHTML = 
             `
             <ul>
@@ -123,8 +131,9 @@ class MenuItem {
 
 class Button {
 
-    constructor(assetsURL) {
+    constructor(assetsURL, placement) {
         this.assetsURL = assetsURL;
+        this.placement = placement;
     }
 
     onClickListeners = [];
@@ -132,7 +141,8 @@ class Button {
     render() {
         const el = document.createElement('div');
         el.onclick = event => this.onClickListeners.forEach(listener => listener(event));
-        el.className = 'menu-button';
+        el.classList.add('menu-button');
+        el.classList.add(this.placement);
         el.innerHTML = `<img src="${this.assetsURL}/aucernaLogo-trans.png" style="width: 100%"/>`;
         return el;
     }
