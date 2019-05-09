@@ -114,7 +114,7 @@ class MenuItem {
 
     render() {
         if (this.disabled) {
-            return `<li><a class="disabled"><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
+            return `<li class="disabled"><a><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
         } else {
             return `<li><a href="${this.item.link}"><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
         }
