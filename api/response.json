@@ -7,12 +7,12 @@
 				"link": "https://portfolio34.z22.web.core.windows.net/"
 			},		
 			{
-                "name": "Reserves",
+                "name": "Execute",
 				"icon": "https://lautarobock.github.io/aucerna-navigation/assets/au-execute.png",
 				"link": "javascript:alert('hello')"
 			},
 			{
-                "name": "PlanningSpace",
+                "name": "Reserves",
 				"icon": "https://lautarobock.github.io/aucerna-navigation/assets/au-reserves.png",
 				"link": "javascript:alert('hello')"
 			},
