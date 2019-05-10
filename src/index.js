@@ -61,7 +61,7 @@ class Main {
     run() {
         new JsonHttp().get(`${this.context.url}${CONFIG_URI}`)
             .then(response => {
-                // this.addStyleTag();
+                this.addStyleTag();
                 this.prepareFrame(response);
             })
             .catch(err => console.error(err));
