@@ -208,7 +208,17 @@
 
 .menu-wrapper li {    
     transition: background-color .3s ease-out, border .3s ease-out;
+    filter: grayscale(100%);
 }
+
+.menu-wrapper li:hover {    
+    transition: background-color .3s ease-out, border .3s ease-out;
+}
+
+.menu-wrapper li:hover, .menu-wrapper li.selected {    
+    filter: none;
+}
+
 
 .menu-wrapper li.disabled {
     opacity: 0.3;
@@ -220,10 +230,9 @@
 }
 
 .menu-wrapper li img {
-    margin-right: 5px;
-    width: 60px;
-    height: 60px;
+    
 }
+
 .menu-wrapper ul li a {
     padding: 10px 20px;
     text-decoration: none !important;
@@ -232,6 +241,6 @@
     display: block;
 }
 
-.menu-wrapper ul li.disabled a {
+.menu-wrapper ul li.disabled{
     cursor: default;
 }

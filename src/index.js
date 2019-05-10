@@ -107,7 +107,7 @@ class Menu {
         el.innerHTML = 
             `
             <ul>
-                ${this.data.menu.applications.map(item => new MenuItem(item, item.name === this.current).render()).join('')}
+                ${this.data.menu.applications.map(item => new MenuItem(item, item.name === this.current, item.disabled).render()).join('')}
             </ul>`;
         return el;
     }
@@ -115,16 +115,21 @@ class Menu {
 
 class MenuItem {
     
-    constructor(item, disabled) {
+    constructor(item, selected, disabled) {
         this.item = item;
         this.disabled = disabled;
+        this.selected = selected;
     }
 
     render() {
+
         if (this.disabled) {
-            return `<li class="disabled"><a><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
+            return `<li class="disabled"><a><img src=${this.item.icon}></a></li>`;
+        }
+        else if(this.selected){
+            return `<li class="selected"><a href="${this.item.link}"><img src=${this.item.icon}></a></li>`;
         } else {
-            return `<li><a href="${this.item.link}"><img src=${this.item.icon}><span>${this.item.name}</span></a></li>`
+            return `<li><a href="${this.item.link}"><img src=${this.item.icon}></a></li>`;
         }
     }
 }
