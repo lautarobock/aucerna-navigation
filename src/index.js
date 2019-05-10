@@ -14,6 +14,9 @@ class Main {
     placement;
     
     constructor(context, placement) {
+        if(window.location.href === 'https://portfolio34.z22.web.core.windows.net/'){
+            context.current = 'Portfolio';
+        }
         console.log('START MENU');
         this.context = context;
         this.placement = placement || PLACEMENT_BOTTOM_RIGTH;
