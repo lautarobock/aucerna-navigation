@@ -15,7 +15,7 @@ class Main {
     
     constructor(context, placement) {
         console.log('window.location.href=',window.location.href);
-        if(window.location.href === 'https://portfolio34.z22.web.core.windows.net/'){
+        if (window.location.href.str.startsWith('https://portfolio34.z22.web.core.windows.net/')) {
             context.current = 'Portfolio';
         }
         console.log('START MENU');
