@@ -19,7 +19,7 @@
 			{
                 "name": "Dataflow",
 				"icon": "https://lautarobock.github.io/aucerna-navigation/assets/au-dataflow.png",
-				"link": "http://localhost:8080/"
+				"link": "http://localhost:4200/"
 			},
 			{
                 "name": "Economics",
